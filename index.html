@@ -140,17 +140,23 @@ section,[id]{scroll-margin-top:90px}
 .card h3{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,2.8vw,2.7rem);line-height:1;margin:14px 0 22px}
 .card ul{list-style:none;border-top:1px solid var(--lineD);margin-top:auto}
 .card li{border-bottom:1px solid var(--lineD)}
-.card li a{display:flex;justify-content:space-between;padding:13px 0;font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:.84rem;transition:padding .4s var(--ease),color .4s}
-.card li a:hover{padding-left:8px;color:var(--deep)}
+.card li span{display:flex;align-items:center;gap:12px;padding:13px 0;font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:.84rem}
+.card li span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
 
 /* MEET */
-.meet{display:grid;grid-template-columns:6fr 5fr;gap:clamp(40px,7vw,110px);align-items:center}
+.meet{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,110px);align-items:start}
 .photo{position:relative;border-radius:6px;overflow:hidden;background:linear-gradient(135deg,#0c0f14,#4fa6e6)}
 .photo img{width:100%;height:100%;object-fit:cover}
-.meet .photo{aspect-ratio:16/10}
+.meet .portrait{aspect-ratio:4/5;position:sticky;top:110px}
 .meet .photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--line);border-radius:6px}
 .meet h2{font-size:clamp(2.3rem,4.2vw,4rem);margin:24px 0 26px}
-.meet p{font-size:1.12rem;color:rgba(255,255,255,.75);max-width:46ch;margin-bottom:38px}
+.meet p{font-size:1.05rem;color:rgba(255,255,255,.72);max-width:58ch;margin-bottom:20px}
+.meet p.lead{font-size:1.28rem;color:var(--white);line-height:1.5}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:38px 0 40px}
+.facts div{padding:24px 18px 22px 0}
+.facts div + div{padding-left:22px;border-left:1px solid var(--line)}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,2.4vw,2.2rem);line-height:1.1}
+.facts span{font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--sky)}
 .meet p strong{font-weight:500;color:var(--white)}
 
 /* TESTIMONIALS */
@@ -216,6 +222,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
   .burger{display:block;z-index:60}
   .cards,.vgrid,.rgrid,.tgrid,.meet,.contact{grid-template-columns:1fr}
   .rcard{aspect-ratio:4/3}
+  .meet .portrait{position:relative;top:0}
+  .facts{grid-template-columns:1fr}.facts div + div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
 }
 @media (max-width:600px){form{grid-template-columns:1fr}.logo{height:34px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
@@ -319,10 +327,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
           <div class="num">01</div>
           <h3>World-class <em>speaker</em></h3>
           <ul>
-            <li><a href="https://www.tompesce.com/corporate">Corporate <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/educators">Educators <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/student-leaders">Student Leaders <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/sports-teams">Sports Teams <span>→</span></a></li>
+            <li><span>Corporate</span></li>
+            <li><span>Educators</span></li>
+            <li><span>Student Leaders</span></li>
+            <li><span>Sports Teams</span></li>
           </ul>
         </div>
       </article>
@@ -332,8 +340,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
           <div class="num">02</div>
           <h3>Global <em>emcee</em> &amp; awards host</h3>
           <ul>
-            <li><a href="https://www.tompesce.com/corporate-conference-emcee">Conference Emcee <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/corporate-conference-emcee">Awards Host <span>→</span></a></li>
+            <li><span>Conference Emcee</span></li>
+            <li><span>Awards Host</span></li>
           </ul>
         </div>
       </article>
@@ -343,10 +351,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
           <div class="num">03</div>
           <h3>Multi-award-winning <em>entertainer</em></h3>
           <ul>
-            <li><a href="https://www.tompesce.com/stage-show-1">Stage Show <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/closeup-magic-1">Close-Up Magic <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/the-virtual-show">Virtual Show <span>→</span></a></li>
-            <li><a href="https://www.tompesce.com/prediction">Prediction <span>→</span></a></li>
+            <li><span>Stage Show</span></li>
+            <li><span>Close-Up Magic</span></li>
+            <li><span>Virtual Show</span></li>
+            <li><span>Prediction</span></li>
           </ul>
         </div>
       </article>
@@ -354,19 +362,28 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
   </div>
 </section>
 
-<!-- MEET TOM -->
+<!-- MEET TOM / BIO -->
 <section class="pad" id="about">
   <div class="wrap meet">
-    <a class="photo rv" href="https://westfaironline.com/featured/corporate-sports-entertainer-taps-into-the-magic-in-all-of-us/" target="_blank" rel="noopener">
-      <img src="https://images.squarespace-cdn.com/content/v1/5c648a85797f741e0c5267d1/1636953896783-4TEDBEVGPAFY6BGTS2Y5/Screen%2BShot%2B2021-11-14%2Bat%2B10.00.45%2BPM.jpg?format=1500w" alt="Tom Pesce" loading="lazy" onerror="this.remove()">
-    </a>
-    <div>
+    <div class="photo portrait rv">
+      <img src="https://images.squarespace-cdn.com/content/v1/5c648a85797f741e0c5267d1/5dc3a0de-2d4c-4bdd-ae7e-4eba8874eec7/infotompesce.com-036-ZF-6024-34789-1-001-017.jpg?format=1500w" alt="Tom Pesce" loading="lazy" onerror="this.remove()">
+    </div>
+    <div class="bio">
       <div class="eyebrow rv">Meet Tom</div>
-      <h2 class="display rv d1">Leading a revolution in <em class="ombre">corporate America.</em></h2>
-      <p class="rv d2">Discover why the world’s most successful organizations rely on Tom to deliver the highest level of <strong>Content + Entertainment</strong> to their clients and employees, year after year.</p>
+      <h2 class="display rv d1">Who is <em class="ombre">Tom Pesce?</em></h2>
+      <p class="rv d2 lead">Tom Pesce is an international speaker, educator, emcee, and motivational entertainer. His long client list includes companies such as NASA, Amazon, Google, NBC, Nasdaq, Formula 1, and more.</p>
+      <p class="rv d2">Tom has toured as a headliner for Princess Cruises and regularly works with professional sports teams and Fortune 500 companies around the world. Recently named “WinWin Charity Entertainer of the Year” and honored by the Site Crystal Awards as “Standalone Celebratory Event of the Year”, Tom’s mission is clear: to make a lasting, positive impact wherever he goes.</p>
+      <p class="rv d2">In addition to his award-winning stage work, Tom is also a distinguished educator with over twenty years experience teaching fourth and sixth grade in Westchester, NY. He has earned multiple graduate degrees in the fields of elementary education, school district administration, and advanced leadership studies.</p>
+      <p class="rv d2">Today, Tom shares his passion worldwide, helping individuals and organizations discover their own magic in both their personal and professional lives.</p>
+      <p class="rv d2">Tom lives in Ridgefield, CT with his wife, Becky, and their three children.</p>
+      <div class="facts rv d3">
+        <div><b class="ombre">20+</b><span>Years in the classroom</span></div>
+        <div><b class="ombre">Fortune 500</b><span>&amp; pro sports clients</span></div>
+        <div><b class="ombre">Headliner</b><span>Princess Cruises</span></div>
+      </div>
       <div class="rv d3" style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="#contact" class="btn solid">Let's Talk <span class="arr">→</span></a>
         <a href="https://westfaironline.com/featured/corporate-sports-entertainer-taps-into-the-magic-in-all-of-us/" target="_blank" rel="noopener" class="btn">Read the Story <span class="arr">→</span></a>
-        <a href="https://www.tompesce.com/bio" class="btn solid">Full Bio <span class="arr">→</span></a>
       </div>
     </div>
   </div>
