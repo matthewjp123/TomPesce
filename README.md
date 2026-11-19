@@ -1,6 +1,6 @@
 # Tom Pesce | Website
 
-Single page site. Everything lives in `index.html`. Upload it to a repo, then Settings > Pages > Deploy from branch > `main` / root.
+Two pages: `index.html` (homepage) and `bio.html` (full bio). Keep both files in the same folder. Upload it to a repo, then Settings > Pages > Deploy from branch > `main` / root.
 
 ## Photos
 All photos, the logo and the videos load from Tom's existing Squarespace and Vimeo accounts, so nothing extra needs uploading.
